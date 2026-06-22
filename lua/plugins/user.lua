@@ -1,6 +1,8 @@
 ---@type LazySpec
 return {
+
   { "max397574/better-escape.nvim", enabled = false },
+
   { "nvim-tree/nvim-web-devicons", enabled = false },
   -- { "echasnovski/mini.icons", enabled = false },
 
@@ -17,12 +19,6 @@ return {
   },
 
   {
-    "phaazon/hop.nvim",
-    branch = "v2",
-    config = function() require("hop").setup {} end,
-  },
-
-  {
     "s1n7ax/nvim-window-picker",
     opts = function(_, opts)
       opts.selection_chars = "1234567890"
@@ -32,14 +28,21 @@ return {
     end,
   },
 
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function() require("lsp_signature").setup() end,
+  },
+
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
-      require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
       -- add more custom luasnip configuration such as filetype extend or custom snippets
       local luasnip = require "luasnip"
       luasnip.filetype_extend("javascript", { "javascriptreact" })
+
+      -- include the default astronvim config that calls the setup call
+      require "astronvim.plugins.configs.luasnip"(plugin, opts)
     end,
   },
 

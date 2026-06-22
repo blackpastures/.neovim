@@ -35,9 +35,7 @@ return {
     --     checkOnSave = false
     --   },
     -- },
-    handlers = {
-      rust_analyzer = false,
-    }, -- Let rustaceanvim setup `rust_analyzer`
+    handlers = {},
     ---@diagnostic disable: missing-fields
     -- customize how language servers are attached
     autocmds = {
